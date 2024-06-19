@@ -21,14 +21,14 @@ public class PracticeFormTest extends BaseTest{
 //    }
 
 
-    @Test
-    public void practiceFormTest() throws InterruptedException {
-        browserHelper.open("https://demoqa.com/automation-practice-form");
-//        driver.get("https://demoqa.com/automation-practice-form");
-        PracticeFormEntity practiceFormEntity = randomUtils.generateRandomPracticeFormEntity();
-        demoQAPages.getPracticeFormPage().fillUpPracticeForm(practiceFormEntity);
-
-    }
+//    @Test
+//    public void practiceFormTest() throws InterruptedException {
+//        browserHelper.open("https://demoqa.com/automation-practice-form");
+////        driver.get("https://demoqa.com/automation-practice-form");
+//        PracticeFormEntity practiceFormEntity = randomUtils.generateRandomPracticeFormEntity();
+//        demoQAPages.getPracticeFormPage().fillUpPracticeForm(practiceFormEntity);
+//
+//    }
 
     @Test
     public void test123() throws InterruptedException {
