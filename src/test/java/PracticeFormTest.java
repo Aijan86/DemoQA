@@ -30,8 +30,7 @@ public class PracticeFormTest extends BaseTest{
 //
 //    }
 
-    @Test
-    public void test123() throws InterruptedException {
+I    public void test123() throws InterruptedException {
         browserHelper.open("https://demoqa.com/automation-practice-form");
         demoQAPages.getPracticeFormPage().selectDateMonthYear("30 June 2020");
     }
