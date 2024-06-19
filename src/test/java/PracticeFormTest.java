@@ -1,6 +1,12 @@
+import com.demoqa.drivers.DriverManager;
 import com.demoqa.entities.PracticeFormEntity;
 import com.demoqa.entities.TextBoxEntity;
+import com.demoqa.helper.*;
+import com.demoqa.pages.DemoQAPages;
 import com.demoqa.pages.PracticeFormPage;
+import com.demoqa.utils.RandomUtils;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
@@ -8,6 +14,13 @@ import java.util.Random;
 
 @Listeners(com.demoqa.listener.ScreenshotListener.class)
 public class PracticeFormTest extends BaseTest{
+
+    @BeforeClass(alwaysRun = true)
+    public void setUp() {
+        driver = DriverManager.getDriver();
+    }
+
+
     @Test
     public void practiceFormTest() throws InterruptedException {
         driver.get("https://demoqa.com/automation-practice-form");
