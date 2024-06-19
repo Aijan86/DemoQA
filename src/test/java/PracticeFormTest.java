@@ -39,9 +39,4 @@ public class PracticeFormTest extends BaseTest{
     // Local Date
     // Local Time
 
-        @AfterClass(alwaysRun = true)
-        public void tearDown()  {
-            DriverManager.closeDriver();
-        }
-
 }
