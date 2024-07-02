@@ -6,29 +6,30 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
-
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.Duration;
 import java.util.HashMap;
 import java.util.Map;
-
 import static com.demoqa.utils.ConfigReader.getValue;
 
-public class ChromeWebDriver {
 
+//Этот класс ChromeWebDriver предназначен для настройки и запуска веб-драйвера Chrome с использованием библиотеки Selenium.
+
+public class ChromeWebDriver {
     public static WebDriver loadChromeDriver() {
+        //Автоматически загружает и устанавливает правильную версию ChromeDrive
         WebDriverManager.chromedriver().setup();
 
-
+        //Настройка ChromeOptions
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("--remote-allow-origins=*");
-        options.addArguments("--disable-extensions");
-        options.addArguments("--window-size-1920,1080");
-        options.addArguments("--no-sandbox");
-        options.setPageLoadStrategy(PageLoadStrategy.NORMAL);
+        options.addArguments("--remote-allow-origins=*");//Разрешает удаленные источники
+        options.addArguments("--disable-extensions");//Отключает расширения Chrome
+        options.addArguments("--window-size-1920,1080");//Устанавливает размер окна браузера
+        options.addArguments("--no-sandbox");//Запускает Chrome без песочницы
+        options.setPageLoadStrategy(PageLoadStrategy.NORMAL);//Устанавливает стратегию загрузки страницы
 
-        if (Boolean.parseBoolean(getValue("headless"))){
+        if (Boolean.parseBoolean(getValue("headless"))){//Если в пропертис указан headless = true, то мы не будем видеть графическое отображение
             options.addArguments("--headless");
         }
 
@@ -40,6 +41,7 @@ public class ChromeWebDriver {
 
 
 
+//для удаленного запуска через Sauce Labs
 
 //        ChromeOptions browserOptions = new ChromeOptions();
 //        browserOptions.setPlatformName("Windows 11");

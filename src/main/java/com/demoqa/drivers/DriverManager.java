@@ -1,9 +1,11 @@
 package com.demoqa.drivers;
 
 import com.demoqa.utils.ConfigReader;
-import io.github.bonigarcia.wdm.managers.OperaDriverManager;
 import org.openqa.selenium.WebDriver;
 
+// Класс DriverManager отвечает за управление экземпляром веб-драйвера (WebDriver).
+// Он использует паттерн Singleton для обеспечения того, что только один экземпляр драйвера используется в течение выполнения тестов.
+// Этот класс также позволяет закрывать драйвер корректно.
 public class DriverManager {
 
     private static WebDriver driver;

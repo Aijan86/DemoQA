@@ -13,6 +13,9 @@ public class ScreenshotListener implements ITestListener {
 
     WebDriver driver = DriverManager.getDriver();
 
+
+    // эти методы используются в ScreenshotListener для логирования различных этапов выполнения тестов и для создания
+    // скриншотов в случае ошибки, что повышает информативность и полезность автоматизированных тестовых отчетов.
     @Override
     public void onTestFailure(ITestResult result) {
         if (driver != null) {

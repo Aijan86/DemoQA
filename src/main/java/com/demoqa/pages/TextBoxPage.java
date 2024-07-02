@@ -8,6 +8,8 @@ import org.openqa.selenium.support.FindBy;
 
 public class TextBoxPage extends BasePage{
 
+    // Аннотация @FindBy: Используется для инициализации веб-элементов с помощью Selenium PageFactory.
+
     @FindBy(xpath ="//*[@id='userName']")
     public WebElement fullNameInput;
 
