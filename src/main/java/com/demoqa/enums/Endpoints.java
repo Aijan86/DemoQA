@@ -2,13 +2,15 @@ package com.demoqa.enums;
 
 import lombok.Getter;
 
+
+@Getter
 public enum Endpoints {
 
     ALERT("/alerts"),
     FRAMES("/frames");
 
-    @Getter
-    String endpoint;
+
+    public final String endpoint;
 
     Endpoints(String endpoint) {
         this.endpoint=endpoint;

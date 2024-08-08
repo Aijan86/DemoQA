@@ -17,7 +17,7 @@ import static com.demoqa.utils.ConfigReader.getValue;
 //Этот класс ChromeWebDriver предназначен для настройки и запуска веб-драйвера Chrome с использованием библиотеки Selenium.
 
 public class ChromeWebDriver {
-    public static WebDriver loadChromeDriver() {
+    public static WebDriver loadChromeDriverRemote() {
         //Автоматически загружает и устанавливает правильную версию ChromeDrive
         WebDriverManager.chromedriver().setup();
 
@@ -29,17 +29,47 @@ public class ChromeWebDriver {
         options.addArguments("--no-sandbox");//Запускает Chrome без песочницы
         options.setPageLoadStrategy(PageLoadStrategy.NORMAL);//Устанавливает стратегию загрузки страницы
 
-        if (Boolean.parseBoolean(getValue("headless"))){//Если в пропертис указан headless = true, то мы не будем видеть графическое отображение
+        if (Boolean.parseBoolean(getValue("headless"))) {//Если в пропертис указан headless = true, то мы не будем видеть графическое отображение
             options.addArguments("--headless");
         }
 
-        WebDriver driver = new ChromeDriver(options);
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
+        WebDriver driver = null;
+        try {
+            // URL of the remote Selenium server
+            URL remoteUrl = new URL("https://localhost:4444/wd/hub");
+            // Initialize the remote WebDriver instance
+            driver = new RemoteWebDriver(remoteUrl, options);
+
+            driver.manage().window().maximize();
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return driver;
+    }
 
 
+        public static WebDriver loadChromeDriver() {
+            //Автоматически загружает и устанавливает правильную версию ChromeDrive
+            WebDriverManager.chromedriver().setup();
 
+            //Настройка ChromeOptions
+            ChromeOptions options = new ChromeOptions();
+            options.addArguments("--remote-allow-origins=*");//Разрешает удаленные источники
+            options.addArguments("--disable-extensions");//Отключает расширения Chrome
+            options.addArguments("--window-size-1920,1080");//Устанавливает размер окна браузера
+            options.addArguments("--no-sandbox");//Запускает Chrome без песочницы
+            options.setPageLoadStrategy(PageLoadStrategy.NORMAL);//Устанавливает стратегию загрузки страницы
+
+            if (Boolean.parseBoolean(getValue("headless"))) {//Если в пропертис указан headless = true, то мы не будем видеть графическое отображение
+                options.addArguments("--headless");
+            }
+
+            WebDriver driver = new ChromeDriver(options);
+            driver.manage().window().maximize();
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
+            return driver;
+        }
 
 //для удаленного запуска через Sauce Labs
 
@@ -71,4 +101,3 @@ public class ChromeWebDriver {
     }
 
 
-    }

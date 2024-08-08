@@ -22,6 +22,9 @@ public class DriverManager {
                 case "edge":
                     driver = EdgeWebDriver.loadEdgeDriver();
                     break;
+                case "remote":
+                    driver = ChromeWebDriver.loadChromeDriverRemote();
+                    break;
 
                 default:
                     throw new IllegalArgumentException("You provided wrong Driver name");

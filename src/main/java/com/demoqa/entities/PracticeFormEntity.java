@@ -2,9 +2,6 @@ package com.demoqa.entities;
 
 
 import lombok.*;
-import org.openqa.selenium.WebElement;
-
-import java.util.List;
 
 @Getter
 @Setter
